@@ -20,4 +20,7 @@ git checkout tags/$(git describe --abbrev=0 --tags)
 	
 cd /tmp/s6/
 git checkout tags/$(git describe --abbrev=0 --tags)
-./configure && make && make install DESTDIR=dist
+./configure   --enable-static \
+          --disable-shared \
+          --enable-static-libc \
+          && make && make install DESTDIR=dist
